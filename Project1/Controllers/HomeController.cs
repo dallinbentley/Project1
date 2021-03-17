@@ -11,6 +11,8 @@ namespace Project1.Controllers
 {
     public class HomeController : Controller
     {
+        private AppointmentContext context { get; set; }
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -29,7 +31,23 @@ namespace Project1.Controllers
         }
         public IActionResult ViewAppointments()
         {
-            return View("SignUp");
+            return View();
+        }
+        [HttpGet] IActionResult SignUp()
+        {
+            return View(context.AvailableTimes);
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(Appointment a)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Appointments.Add(a);
+                context.SaveChanges();
+            }
+
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
