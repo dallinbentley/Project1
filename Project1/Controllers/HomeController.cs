@@ -24,21 +24,29 @@ namespace Project1.Controllers
         {
             return View();
         }
-        
-        public IActionResult SignUp()
+
+        [HttpGet]
+        IActionResult SignUp()
         {
+            return View(context.AvailableTimes);
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(Appointment a)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Appointments.Add(a);
+                context.SaveChanges();
+            }
+
             return View();
         }
 
-        public IActionResult SignUp(Appointment appointment)
-        {
-            return View("Form", appointment);
-        }
         public IActionResult ViewAppointments()
         {
-            return View();
+                return View(context.Appointments);
         }
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
