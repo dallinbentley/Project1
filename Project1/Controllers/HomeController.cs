@@ -15,9 +15,10 @@ namespace Project1.Controllers
 
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AppointmentContext con)
         {
             _logger = logger;
+            context = con;
         }
 
         public IActionResult Index()
@@ -36,7 +37,7 @@ namespace Project1.Controllers
         }
         public IActionResult ViewAppointments()
         {
-            return View();
+            return View(context.Appointments);
         }
 
 
