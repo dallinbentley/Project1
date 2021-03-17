@@ -27,26 +27,59 @@ namespace Project1.Controllers
         }
 
         [HttpGet]
-        IActionResult SignUp()
+        public IActionResult SignUp()
         {
-            return View(context.AvailableTimes);
+            return View(new SignUpViewModel
+            {
+                availableTimes = context.AvailableTimes
+            });
         }
 
         [HttpPost]
-        public IActionResult SignUp(Appointment a)
+        public IActionResult SignUp(SignUpViewModel form)
+        {
+            ViewBag.Time = form.signUpTime.AvailableTime;
+            return View("Form", new FormViewModel
+            {
+                formTime = form.signUpTime
+            });
+        }
+
+        [HttpPost]
+        public IActionResult FormPage(FormViewModel form)
         {
             if (ModelState.IsValid)
             {
-                context.Appointments.Add(a);
-                context.SaveChanges();
-            }
+                Appointment newAppointment = new Appointment();
 
-            return View();
+                newAppointment.AppointmentTime = form.formTime.AvailableTime;
+                newAppointment.GroupName = form.appointment.GroupName;
+                newAppointment.GroupSize = form.appointment.GroupSize;
+                newAppointment.Email = form.appointment.Email;
+                newAppointment.Phone = form.appointment.Phone;
+
+                context.Appointments.Add(newAppointment);
+
+                context.AvailableTimes.Remove(context.AvailableTimes.Find(form.formTime.TimeId));
+
+                context.SaveChanges();
+
+                return View("Confirmation");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult ViewAppointments()
         {
                 return View(context.Appointments);
+        }
+
+        public IActionResult Confirmation()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
