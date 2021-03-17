@@ -3,4 +3,15 @@
     ViewData["Title"] = "Sign Up";
 }
 
-<p>This is the signup page</p>
+<h1>Available Tours</h1>
+<body>
+    @foreach (Project1.Models.AvailableTimes x in Model)
+    {
+        <tr>
+            <td>x.AvailableTime</td>
+            <td>
+                <button type="submit" id="submit">Schedule</button>
+            </td>
+        </tr>
+    }
+</body>
