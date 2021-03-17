@@ -24,10 +24,15 @@ namespace Project1.Controllers
         {
             return View();
         }
-
-        public IActionResult EnterAppointment()
+        
+        public IActionResult SignUp()
         {
-            return View("Form");
+            return View();
+        }
+
+        public IActionResult SignUp(Appointment appointment)
+        {
+            return View("Form", appointment);
         }
         public IActionResult ViewAppointments()
         {

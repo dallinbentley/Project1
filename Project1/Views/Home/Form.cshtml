@@ -1,0 +1,32 @@
+
+@{
+    ViewData["Title"] = "Sign Up Confirmation";
+}
+
+<h1>Tour Appointment Confirmation</h1>
+
+<form>
+
+    <label>Appointment: </label>
+    <br />
+
+    <label>Group Name: </label>
+    <input required />
+    <br />
+
+    <label>Group Size: </label>
+    <input type="number" min="1" max="30" required />
+    <br />
+
+    <label>Email Address: </label>
+    <input type="email" required />
+    <br />
+
+    <label>Phone Number: </label>
+    <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" />
+    <br />
+
+    <button type="submit">Confirm</button>
+
+
+</form>
