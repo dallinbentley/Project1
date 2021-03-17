@@ -5,29 +5,32 @@
 @model FormViewModel
 <h1>Tour Appointment Confirmation</h1>
 
-<form>
-    <label>Appointment: </label>
-        <input type="text" value="@ViewBag.Time" readonly />
+<form method="post" asp-action="FormPage">
+    <label asp-for="appointment.AppointmentTime">Appointment: </label>
+    <input asp-for="appointment.AppointmentTime" type="text" value="@ViewBag.Time" readonly />
     <br />
 
     <label asp-for="appointment.GroupName">Group Name: </label>
-        <input type="text" asp-for="appointment.GroupName" required />
+    <input type="text" asp-for="appointment.GroupName" required />
     <br />
 
     <label asp-for="appointment.GroupSize">Group Size: </label>
-        <input type="number" asp-for="appointment.GroupSize" min="1" max="30" required />
+    <input type="number" asp-for="appointment.GroupSize" min="1" max="30" required />
     <br />
 
     <label asp-for="appointment.Email">Email Address: </label>
-        <input type="email" asp-for="appointment.Email" required />
+    <input type="email" asp-for="appointment.Email" required />
     <br />
 
     <label asp-for="appointment.Phone">Phone Number: </label>
-        <input type="tel" asp-for="appointment.Phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" />
+    <input type="tel" asp-for="appointment.Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
     <br />
 
-    <input type="hidden" asp-for="time.AvailableTime" />
-    <input type="hidden" asp-for="time.TimeId" />
+    <input type="hidden" asp-for="Year" value="@Model.Year" />
+    <input type="hidden" asp-for="Month" value="@Model.Month" />
+    <input type="hidden" asp-for="Day" value="@Model.Day" />
+    <input type="hidden" asp-for="Hour" value="@Model.Hour" />
+    <input type="hidden" asp-for="TimeId" value="@Model.TimeId" />
 
     <button type="submit">Confirm</button>
 </form>

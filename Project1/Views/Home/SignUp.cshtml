@@ -2,20 +2,223 @@
 @{
     ViewData["Title"] = "Available Tours";
 }
-@model TimesViewModel
+@model SignUpViewModel
 <h1>Available Tours</h1>
+<br />
+<div class="row">
+    <div class="col-3">
+        <h2>Monday 3/15/2021</h2>
+        @foreach (var x in Model.availableTimes)
+        {
+            @if (x.AvailableTime.Day == 15)
+            {
+                <div class="row">
+                    <h3>
+                        @if (x.AvailableTime.Hour > 12)
+                        {
+                            @(x.AvailableTime.Hour - 12 + ":00 PM");
+                        }
+                        else
+                        {
+                            @(x.AvailableTime.Hour + ":00 AM");
+                        }
+                    </h3>
+                    <form method="post" asp-action="SignUp">
+                        <input hidden asp-for="TimeId" value="@x.TimeId" />
+                        <input hidden asp-for="Year" value="@x.AvailableTime.Year" />
+                        <input hidden asp-for="Hour" value="@x.AvailableTime.Hour" />
+                        <input hidden asp-for="Month" value="@x.AvailableTime.Month" />
+                        <input hidden asp-for="Day" value="@x.AvailableTime.Day" />
+                        <button type="submit" id="submit">Reserve</button>
 
-@foreach (var x in Model.availableTimes)
-{
-    <h3>
-        @x.AvailableTime.DayOfWeek, @x.AvailableTime.Month @x.AvailableTime.Day
-    </h3>
+                    </form>
+                </div>
+            }
+        }
+    </div>
 
-    <form method="post" asp-action="SignUp">
-        <p>
-            @x.AvailableTime.Hour
-            <input hidden asp-for="availableTime.TimeId" value="@x.TimeId" />
-            <button type="submit" id="submit">Reserve</button>
-        </p>
-    </form>
-}
+    <div class="col-3">
+        <h2>Tuesday 3/16/2021</h2>
+        @foreach (var x in Model.availableTimes)
+        {
+            @if (x.AvailableTime.Day == 16)
+            {
+                <div class="row">
+                    <h3>
+                        @if (x.AvailableTime.Hour > 12)
+                        {
+                            @(x.AvailableTime.Hour - 12 + ":00 PM");
+                        }
+                        else
+                        {
+                            @(x.AvailableTime.Hour + ":00 AM");
+                        }
+                    </h3>
+                    <form method="post" asp-action="SignUp">
+                        <input hidden asp-for="TimeId" value="@x.TimeId" />
+                        <input hidden asp-for="Year" value="@x.AvailableTime.Year" />
+                        <input hidden asp-for="Hour" value="@x.AvailableTime.Hour" />
+                        <input hidden asp-for="Month" value="@x.AvailableTime.Month" />
+                        <input hidden asp-for="Day" value="@x.AvailableTime.Day" />
+                        <button type="submit" id="submit">Reserve</button>
+
+                    </form>
+                </div>
+            }
+        }
+    </div>
+    <div class="col-3">
+        <h2>Wednesday 3/17/2021</h2>
+        @foreach (var x in Model.availableTimes)
+        {
+            @if (x.AvailableTime.Day == 17)
+            {
+                <div class="row">
+                    <h3>
+                        @if (x.AvailableTime.Hour > 12)
+                        {
+                            @(x.AvailableTime.Hour - 12 + ":00 PM");
+                        }
+                        else
+                        {
+                            @(x.AvailableTime.Hour + ":00 AM");
+                        }
+                    </h3>
+                    <form method="post" asp-action="SignUp">
+                        <input hidden asp-for="TimeId" value="@x.TimeId" />
+                        <input hidden asp-for="Year" value="@x.AvailableTime.Year" />
+                        <input hidden asp-for="Hour" value="@x.AvailableTime.Hour" />
+                        <input hidden asp-for="Month" value="@x.AvailableTime.Month" />
+                        <input hidden asp-for="Day" value="@x.AvailableTime.Day" />
+                        <button type="submit" id="submit">Reserve</button>
+
+                    </form>
+                </div>
+            }
+        }
+    </div>
+    <div class="col-3">
+        <h2>Thursday 3/18/2021</h2>
+        @foreach (var x in Model.availableTimes)
+        {
+            @if (x.AvailableTime.Day == 18)
+            {
+                <div class="row">
+                    <h3>
+                        @if (x.AvailableTime.Hour > 12)
+                        {
+                            @(x.AvailableTime.Hour - 12 + ":00 PM");
+                        }
+                        else
+                        {
+                            @(x.AvailableTime.Hour + ":00 AM");
+                        }
+                    </h3>
+                    <form method="post" asp-action="SignUp">
+                        <input hidden asp-for="TimeId" value="@x.TimeId" />
+                        <input hidden asp-for="Year" value="@x.AvailableTime.Year" />
+                        <input hidden asp-for="Hour" value="@x.AvailableTime.Hour" />
+                        <input hidden asp-for="Month" value="@x.AvailableTime.Month" />
+                        <input hidden asp-for="Day" value="@x.AvailableTime.Day" />
+                        <button type="submit" id="submit">Reserve</button>
+
+                    </form>
+                </div>
+            }
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <h2>Friday 3/19/2021</h2>
+        @foreach (var x in Model.availableTimes)
+        {
+            @if (x.AvailableTime.Day == 19)
+            {
+                <div class="row">
+                    <h3>
+                        @if (x.AvailableTime.Hour > 12)
+                        {
+                            @(x.AvailableTime.Hour - 12 + ":00 PM");
+                        }
+                        else
+                        {
+                            @(x.AvailableTime.Hour + ":00 AM");
+                        }
+                    </h3>
+                    <form method="post" asp-action="SignUp">
+                        <input hidden asp-for="TimeId" value="@x.TimeId" />
+                        <input hidden asp-for="Year" value="@x.AvailableTime.Year" />
+                        <input hidden asp-for="Hour" value="@x.AvailableTime.Hour" />
+                        <input hidden asp-for="Month" value="@x.AvailableTime.Month" />
+                        <input hidden asp-for="Day" value="@x.AvailableTime.Day" />
+                        <button type="submit" id="submit">Reserve</button>
+
+                    </form>
+                </div>
+            }
+        }
+    </div>
+    <div class="col-4">
+        <h2>Saturday 3/20/2021</h2>
+        @foreach (var x in Model.availableTimes)
+        {
+            @if (x.AvailableTime.Day == 20)
+            {
+                <div class="row">
+                    <h3>
+                        @if (x.AvailableTime.Hour > 12)
+                        {
+                            @(x.AvailableTime.Hour - 12 + ":00 PM");
+                        }
+                        else
+                        {
+                            @(x.AvailableTime.Hour + ":00 AM");
+                        }
+                    </h3>
+                    <form method="post" asp-action="SignUp">
+                        <input hidden asp-for="TimeId" value="@x.TimeId" />
+                        <input hidden asp-for="Year" value="@x.AvailableTime.Year" />
+                        <input hidden asp-for="Hour" value="@x.AvailableTime.Hour" />
+                        <input hidden asp-for="Month" value="@x.AvailableTime.Month" />
+                        <input hidden asp-for="Day" value="@x.AvailableTime.Day" />
+                        <button type="submit" id="submit">Reserve</button>
+
+                    </form>
+                </div>
+            }
+        }
+    </div>
+    <div class="col-4">
+        <h2>Sunday 3/21/2021</h2>
+        @foreach (var x in Model.availableTimes)
+        {
+            @if (x.AvailableTime.Day == 21)
+            {
+                <div class="row">
+                    <h3>
+                        @if (x.AvailableTime.Hour > 12)
+                        {
+                            @(x.AvailableTime.Hour - 12 + ":00 PM");
+                        }
+                        else
+                        {
+                            @(x.AvailableTime.Hour + ":00 AM");
+                        }
+                    </h3>
+                    <form method="post" asp-action="SignUp">
+                        <input hidden asp-for="TimeId" value="@x.TimeId" />
+                        <input hidden asp-for="Year" value="@x.AvailableTime.Year" />
+                        <input hidden asp-for="Hour" value="@x.AvailableTime.Hour" />
+                        <input hidden asp-for="Month" value="@x.AvailableTime.Month" />
+                        <input hidden asp-for="Day" value="@x.AvailableTime.Day" />
+                        <button type="submit" id="submit">Reserve</button>
+
+                    </form>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+

@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 
 namespace Project1.Models.ViewModels
 {
-    public class FormViewModel
+    public class ConfirmationViewModel
     {
-        public int TimeId { get; set; }
         public int Year { get; set; }
         public int Month { get; set; }
         public int Day { get; set; }
         public int Hour { get; set; }
-        public Appointment appointment { get; set; }
     }
 }
