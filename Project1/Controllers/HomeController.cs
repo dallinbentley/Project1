@@ -23,12 +23,11 @@ namespace Project1.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult EnterAppointment()
         {
-            return View();
+            return View("SignUp");
         }
-
-        public IActionResult SignUp()
+        public IActionResult ViewAppointments()
         {
             return View("SignUp");
         }
