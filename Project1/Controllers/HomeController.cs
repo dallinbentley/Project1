@@ -25,21 +25,62 @@ namespace Project1.Controllers
         {
             return View();
         }
-        
+
+        [HttpGet]
         public IActionResult SignUp()
+        {
+            return View(new SignUpViewModel
+            {
+                availableTimes = context.AvailableTimes
+            });
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(SignUpViewModel form)
+        {
+            ViewBag.Time = form.signUpTime.AvailableTime;
+            return View("Form", new FormViewModel
+            {
+                formTime = form.signUpTime
+            });
+        }
+
+        [HttpPost]
+        public IActionResult FormPage(FormViewModel form)
+        {
+            if (ModelState.IsValid)
+            {
+                Appointment newAppointment = new Appointment();
+
+                newAppointment.AppointmentTime = form.formTime.AvailableTime;
+                newAppointment.GroupName = form.appointment.GroupName;
+                newAppointment.GroupSize = form.appointment.GroupSize;
+                newAppointment.Email = form.appointment.Email;
+                newAppointment.Phone = form.appointment.Phone;
+
+                context.Appointments.Add(newAppointment);
+
+                context.AvailableTimes.Remove(context.AvailableTimes.Find(form.formTime.TimeId));
+
+                context.SaveChanges();
+
+                return View("Confirmation");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public IActionResult ViewAppointments()
+        {
+                return View(context.Appointments);
+        }
+
+        public IActionResult Confirmation()
         {
             return View();
         }
-
-        public IActionResult SignUp(Appointment appointment)
-        {
-            return View("Form", appointment);
-        }
-        public IActionResult ViewAppointments()
-        {
-            return View(context.Appointments);
-        }
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

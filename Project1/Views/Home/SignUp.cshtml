@@ -1,8 +1,21 @@
 
 @{
+    ViewData["Title"] = "Available Tours";
 }
-
+@model TimesViewModel
 <h1>Available Tours</h1>
-<body>
-    <button type="submit" id="submit">Schedule</button>
-</body>
+
+@foreach (var x in Model.availableTimes)
+{
+    <h3>
+        @x.AvailableTime.DayOfWeek, @x.AvailableTime.Month @x.AvailableTime.Day
+    </h3>
+
+    <form method="post" asp-action="SignUp">
+        <p>
+            @x.AvailableTime.Hour
+            <input hidden asp-for="availableTime.TimeId" value="@x.TimeId" />
+            <button type="submit" id="submit">Reserve</button>
+        </p>
+    </form>
+}
