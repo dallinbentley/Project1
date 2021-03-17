@@ -25,7 +25,7 @@ namespace Project1.Controllers
 
         public IActionResult EnterAppointment()
         {
-            return View("SignUp");
+            return View("Form");
         }
         public IActionResult ViewAppointments()
         {
