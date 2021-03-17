@@ -1,8 +1,28 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
 }
 
+@model IEnumerable<Appointment>
 
-<p>This is the ViewAppointments page</p>
+<div>
+    <table class="table">
+        <thead>
+            <th>Appointment Time</th>
+            <th>Group Name</th>
+            <th># of Members</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </thead>
+        <tbody>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@a.AppointmentTime</td>
+                    <td>@a.GroupName</td>
+                    <td>@a.GroupSize</td>
+                    <td>@a.Email</td>
+                    <td>@a.Phone</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
