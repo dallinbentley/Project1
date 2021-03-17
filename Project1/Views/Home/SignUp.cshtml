@@ -1,17 +1,8 @@
 
 @{
-    ViewData["Title"] = "Sign Up";
 }
 
 <h1>Available Tours</h1>
 <body>
-    @foreach (Project1.Models.AvailableTimes x in Model)
-    {
-        <tr>
-            <td>x.AvailableTime</td>
-            <td>
-                <button type="submit" id="submit">Schedule</button>
-            </td>
-        </tr>
-    }
+    <button type="submit" id="submit">Schedule</button>
 </body>
