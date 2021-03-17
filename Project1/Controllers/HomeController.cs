@@ -64,7 +64,7 @@ namespace Project1.Controllers
 
                 context.SaveChanges();
 
-                return View("Confirmation");
+                return View();
             }
             else
             {
@@ -75,11 +75,6 @@ namespace Project1.Controllers
         public IActionResult ViewAppointments()
         {
                 return View(context.Appointments);
-        }
-
-        public IActionResult Confirmation()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
