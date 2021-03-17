@@ -28,9 +28,9 @@ namespace Project1.Controllers
             return View();
         }
 
-        public IActionResult EnterAppointment()
+        public IActionResult SignUp()
         {
-            return View();
+            return View("SignUp");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
