@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model ConfirmationViewModel
+
+<h1>Thank You For Signing Up!</h1>
+<h3>Your tour is scheduled for @Model.Month/@Model.Day/@Model.Year at 
+    @if (Model.Hour > 12)
+    {
+        @(Model.Hour - 12 + ":00 PM")
+    }
+    else
+    {
+        @(Model.Hour + ":00 AM")
+    }
+    </h3>

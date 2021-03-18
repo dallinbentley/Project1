@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project1.Models;
+using Project1.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,12 +39,16 @@ namespace Project1.Controllers
         [HttpPost]
         public IActionResult SignUp(SignUpViewModel form)
         {
-            ViewBag.Time = form.signUpTime.AvailableTime;
+            ViewBag.Time = form.Month.ToString() + "/" + form.Day.ToString() + "/" + form.Year.ToString() + " " + form.Hour.ToString() + ":00:00";
             return View("Form", new FormViewModel
             {
-                formTime = form.signUpTime
+                TimeId = form.TimeId,
+                Year = form.Year,
+                Month = form.Month,
+                Day = form.Day,
+                Hour = form.Hour
             });
-        }
+         }
 
         [HttpPost]
         public IActionResult FormPage(FormViewModel form)
@@ -52,7 +57,7 @@ namespace Project1.Controllers
             {
                 Appointment newAppointment = new Appointment();
 
-                newAppointment.AppointmentTime = form.formTime.AvailableTime;
+                newAppointment.AppointmentTime = new System.DateTime(form.Year, form.Month, form.Day, form.Hour,0,0);
                 newAppointment.GroupName = form.appointment.GroupName;
                 newAppointment.GroupSize = form.appointment.GroupSize;
                 newAppointment.Email = form.appointment.Email;
@@ -60,11 +65,17 @@ namespace Project1.Controllers
 
                 context.Appointments.Add(newAppointment);
 
-                context.AvailableTimes.Remove(context.AvailableTimes.Find(form.formTime.TimeId));
+                context.AvailableTimes.Remove(context.AvailableTimes.Find(form.TimeId));
 
                 context.SaveChanges();
 
-                return View(context.Appointments);
+                return View("Confirmation", new ConfirmationViewModel
+                {
+                    Year = newAppointment.AppointmentTime.Year,
+                    Month = newAppointment.AppointmentTime.Month,
+                    Hour = newAppointment.AppointmentTime.Hour,
+                    Day = newAppointment.AppointmentTime.Day
+                }) ;
             }
             else
             {
