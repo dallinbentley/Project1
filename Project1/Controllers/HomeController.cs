@@ -64,7 +64,7 @@ namespace Project1.Controllers
 
                 context.SaveChanges();
 
-                return View();
+                return View(context.Appointments);
             }
             else
             {
