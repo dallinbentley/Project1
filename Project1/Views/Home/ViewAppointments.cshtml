@@ -1,16 +1,20 @@
 ﻿@{
+    ViewData["Title"] = "View Appointments";
 }
+
 
 @model IEnumerable<Appointment>
 
+<h1>View Appointments</h1>
+<br />
 <div>
     <table class="table">
         <thead>
-            <th>Appointment Time</th>
-            <th>Group Name</th>
-            <th># of Members</th>
-            <th>Email</th>
-            <th>Phone</th>
+        <th>Appointment Time</th>
+        <th>Group Name</th>
+        <th># of Members</th>
+        <th>Email</th>
+        <th>Phone</th>
         </thead>
         <tbody>
             @foreach (var a in Model)
