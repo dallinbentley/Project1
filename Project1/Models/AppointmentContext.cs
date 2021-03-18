@@ -13,6 +13,8 @@ namespace Project1.Models
 
         }
 
+        //We create two tables within this appointment context.
+
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<AvailableTimes> AvailableTimes { get; set; }
     }

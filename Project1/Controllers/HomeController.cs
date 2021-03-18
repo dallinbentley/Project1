@@ -39,6 +39,7 @@ namespace Project1.Controllers
         [HttpPost]
         public IActionResult SignUp(SignUpViewModel form)
         {
+            //Set the viewbag for the page here as the date that was selected from the post.
             ViewBag.Time = form.Month.ToString() + "/" + form.Day.ToString() + "/" + form.Year.ToString() + " " + form.Hour.ToString() + ":00:00";
             return View("Form", new FormViewModel
             {
@@ -53,6 +54,7 @@ namespace Project1.Controllers
         [HttpPost]
         public IActionResult FormPage(FormViewModel form)
         {
+            //This is adding the appointment to the database and deleting the time.  We chose to delete the time for the simplicity of this assignment.  Since there are no CRUD requirements, we figured this would be faster and easier.
             if (ModelState.IsValid)
             {
                 Appointment newAppointment = new Appointment();
